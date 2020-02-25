@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "466f1b8b-3272-494f-ac48-a4bc5d8c2228",
+		"name": "IOT_Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/sensorcontrol",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiN2YyMjFkZGM0ZGM1IiwiYXBwSWQiOiJmNWUxYzk2MDA1NmJjYTBmMmM3ZTVhMjYwNjhlY2U0NCIsImV4cCI6MTU3NjU5NjQyOSwiaWF0IjoxNTc2NTEwMDI5fQ.uK9_b7DQRKsBel2fcXuw-Jxpdy18t0pVpUK6_tToRas",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"sensor_id\": \"07\",\n    \"control\":{\"flag\": \"STOP\",\n               \"orderNo\": \"0071\"}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/sensorcontrol",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"sensorcontrol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/sensorstatus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiN2YyMjFkZGM0ZGM1IiwiYXBwSWQiOiJmNWUxYzk2MDA1NmJjYTBmMmM3ZTVhMjYwNjhlY2U0NCIsImV4cCI6MTU3NjU5NjQyOSwiaWF0IjoxNTc2NTEwMDI5fQ.uK9_b7DQRKsBel2fcXuw-Jxpdy18t0pVpUK6_tToRas",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"sensor_id\": \"06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/sensorstatus",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"sensorstatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/batchblockchaincheck",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiN2YyMjFkZGM0ZGM1IiwiYXBwSWQiOiJmNWUxYzk2MDA1NmJjYTBmMmM3ZTVhMjYwNjhlY2U0NCIsImV4cCI6MTU3NjU5NjQyOSwiaWF0IjoxNTc2NTEwMDI5fQ.uK9_b7DQRKsBel2fcXuw-Jxpdy18t0pVpUK6_tToRas",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/batchblockchaincheck",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"batchblockchaincheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:5000/singleblockchaincheck",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbklkIjoiN2YyMjFkZGM0ZGM1IiwiYXBwSWQiOiJmNWUxYzk2MDA1NmJjYTBmMmM3ZTVhMjYwNjhlY2U0NCIsImV4cCI6MTU3NjU5NjQyOSwiaWF0IjoxNTc2NTEwMDI5fQ.uK9_b7DQRKsBel2fcXuw-Jxpdy18t0pVpUK6_tToRas",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"orderNo\": \"0088\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/singleblockchaincheck",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"singleblockchaincheck"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

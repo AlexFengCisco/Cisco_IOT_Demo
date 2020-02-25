@@ -1,0 +1,178 @@
+
+ip dhcp pool GuestOS
+ host 192.168.3.2 255.255.255.0
+ client-identifier 0102.0001.908b.05
+ default-router 192.168.3.1
+ dns-server 202.106.46.151
+!
+ip dhcp pool app
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.1
+ dns-server 202.106.46.151
+!
+!
+ip domain name alex.com
+ip name-server 202.106.46.151
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+!
+domain www.alex.com
+!
+chat-script lte "" "AT!CALL" TIMEOUT 20 "OK"
+!
+license udi pid IR809G-LTE-LA-K9 sn FCW2231007R
+!
+!
+username cisco privilege 15 password 0 cisco
+!
+redundancy
+
+!
+controller Cellular 0
+ lte sim data-profile 1 attach-profile 1 slot 0
+ lte sim fast-switchover enable
+ lte sim max-retry 0
+ lte failovertimer 5
+ lte gps mode standalone
+ lte gps nmea ip
+!
+!
+interface GigabitEthernet0
+ ip address 192.168.1.144 255.255.255.0
+ ip flow monitor mm_1 input
+ ip flow monitor mm_1 output
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ ipv6 enable
+!
+interface GigabitEthernet1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet2
+ ip address 192.168.3.1 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ ipv6 enable
+!
+interface Cellular0
+ ip address negotiated
+ ip nat outside
+ ip virtual-reassembly in
+ encapsulation slip
+ load-interval 30
+ dialer in-band
+ dialer idle-timeout 0
+ dialer string lte
+ dialer-group 1
+ no peer default ip address
+ async mode interactive
+ routing dynamic
+!
+interface Cellular1
+ no ip address
+ encapsulation slip
+!
+interface Async0
+ description /dev/ttyS1 in IOx & controlled by line 1(baud rate, etc.) and line 1/5
+ no ip address
+ encapsulation relay-line
+ half-duplex
+ media-type rs485
+!
+interface Async1
+ description /dev/ttyS2 in IOx & controlled by line 2(baud rate, etc.) and line 1/6
+ no ip address
+ encapsulation relay-line
+!
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip nat inside source list 1 interface GigabitEthernet0 overload
+ip nat inside source list 10 interface Cellular0 overload
+ip nat inside source static tcp 192.168.3.2 8443 interface GigabitEthernet0 8443
+ip nat inside source static tcp 192.168.3.2 22 interface GigabitEthernet0 2222
+
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+ip ssh version 2
+!
+dialer-list 1 protocol ip permit
+ipv6 ioam timestamp
+!
+!
+access-list 1 permit any
+access-list 10 permit 192.168.1.0 0.0.0.255
+access-list 10 permit 192.168.3.0 0.0.0.255
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+ stopbits 1
+line 1
+ transport preferred none
+ transport input all
+ stopbits 1
+line 2
+ stopbits 1
+line 3
+ script dialer lte
+ modem InOut
+ no exec
+ transport preferred lat pad telnet rlogin lapb-ta mop udptn v120 ssh
+ transport input all
+ transport output all
+line 7
+ modem InOut
+ no exec
+ transport input all
+ transport output all
+line 8
+ no exec
+ transport preferred lat pad telnet rlogin lapb-ta mop udptn v120 ssh
+ transport output lat pad telnet rlogin lapb-ta mop udptn v120 ssh
+line 1/3
+ transport preferred none
+ transport output none
+ stopbits 1
+line 1/4
+ transport preferred none
+ transport input all
+ transport output none
+ stopbits 1
+line 1/5 1/6
+ transport preferred none
+ transport output none
+ stopbits 1
+line vty 0 4
+ password cisco
+ transport input ssh
+!
+no scheduler max-task-time
+relay line 1 1/5
+no iox hdm-enable
+iox client enable interface GigabitEthernet2
+no iox recovery-enable
+!
+!
+!
+!
+!
+!
+!
+!
+end

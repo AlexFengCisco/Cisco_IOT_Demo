@@ -1,0 +1,11 @@
+docker image rm iox_alex:v01
+docker build -t iox_alex:v01 ./iox_485_gps/.
+./ioxclient app stop AlexIox
+./ioxclient app deactivate AlexIox
+./ioxclient app uninstall AlexIox
+# 1st time run , there's no package.tar ,do not use the following cli
+rm -f ./iox_485_gps/package.tar
+./ioxclient docker package iox_alex:v01 ./iox_485_gps/.
+./ioxclient app install AlexIox ./iox_485_gps/package.tar
+./ioxclient app activate AlexIox --payload ./iox_485_gps/activation.json
+./ioxclient app start AlexIox
