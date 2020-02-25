@@ -3,7 +3,7 @@
 
 ##### IOT lab for testing Cisco IR809 and Raspberry Pi integrate with Vechain public block chain
 
-![diagrame1](IOT_lab01.png)
+![diagrame1](iot_lab01.png)
 
 #### Lab Environment
     VeChain public cloud Block Chain service API
@@ -51,7 +51,7 @@
     
     vechian_lab.py is an example code for vechain class function .
     
-![diagrame2](IOT_lab02.png)
+![diagrame2](iot_lab02.png)
 
 ####    REST API Guide
     
