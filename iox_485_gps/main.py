@@ -190,7 +190,8 @@ if __name__=="__main__":
                 _val1 = str(feedback_data)
                 if g_output:
                     gl = g_output.split(',')
-                    gps_info = gl[3]+gl[4]+'/'+gl[5]+gl[6]
+                    # gps_info = gl[3]+gl[4]+'/'+gl[5]+gl[6]
+                    gps_info = str(float(gl[3])/100)+gl[4]+'/'+str(float(gl[5])/100)+gl[6]
                 else:
                     gps_info = 'GpsLost'
                 #_val1 = sensors[0]
