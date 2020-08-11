@@ -247,6 +247,6 @@
         
 #### check with local manager https://192.168.1.144:8443/admin
     
-![diagrame3](localmanager01.png)
-![diagrame4](localmanager02.png)
-![diagrame5](localmanager03.png)
+![diagrame3](local_manager01.png)
+![diagrame4](local_manager02.png)
+![diagrame5](local_manager03.png)
