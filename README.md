@@ -245,6 +245,8 @@
         $GNGSA,A,2,66,76,75,65,,,,,,,,,2.0,1.8,0.9,2*31
     
         
-     #check with local manager https://192.168.1.144:8443/admin
+#### check with local manager https://192.168.1.144:8443/admin
     
-    
+![diagrame3](localmanager01.png)
+![diagrame4](localmanager02.png)
+![diagrame5](localmanager03.png)
